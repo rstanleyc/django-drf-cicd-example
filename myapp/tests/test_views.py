@@ -65,8 +65,7 @@ class TestAutorViewSet:
         autor = Autor.objects.create(**autor_data)
         url = reverse("autor-detail", args=[autor.id])
         response = api_client.get(url)
-        #quiero simular un error en el test para lanzar fallo
-        assert response.status_code == status.HTTP_400_BAD_REQUEST
+        assert response.status_code == status.HTTP_200_OK
         assert response.data["nombre"] == autor_data["nombre"]
 
     def test_update_autor(self, api_client, autor_data):
